@@ -10,6 +10,7 @@ class Pelanggan():
         self.data = []
         
     def tambah_data(self, nama, jenis, umur, menu):
+        # menambahkan data pelanggan ke dalam list self.data
         tanggal = date.today().strftime("%d/%m/%y")
         waktu = datetime.now().strftime("%H:%M")
         self.data.append({'Tanggal':tanggal,
@@ -20,6 +21,7 @@ class Pelanggan():
                     'Menu Favorit':menu})
 
     def tampilkan_data(self):
+        # menampilkan data-data pelanggan dengan dataframe pandas
         df = pd.DataFrame(self.data)
         
         clear()
@@ -32,9 +34,11 @@ class Pelanggan():
         lanjut = input("Ketik apapun untuk lanjut! ")
 
     def hapus_data(self, index):
+        # menghapus data pelanggan berdasarkan index
         del self.data[index]
     
     def ekspor_data(self):
+        # mengekspor list data ke dalam file csv
         df = pd.DataFrame(self.data)
         tanggal = date.today().strftime("%y%m%d")
 
@@ -44,9 +48,11 @@ class Pelanggan():
 
 # function
 def clear():
+    # fungsi membersihkan layar
     system('cls')
 
 def get_option():
+    # fungsi menampilkan menu utama
     clear()
     print("="*50)
     print("Program Pendataan Pelanggan Restoran Mas Bagus".center(50,' '))
@@ -63,6 +69,7 @@ def get_option():
     return pilih
 
 def tambah():
+    # fungsi menambah data pelanggan
     print("1. Tambahkan Data")
     nama = input("Nama\t\t\t: ")
     jenis = input("Jenis Kelamin (L/P)\t: ")
@@ -72,6 +79,7 @@ def tambah():
     pelanggan.tambah_data(nama, jenis, umur, menu)
 
 def hapus():
+    # fungsi menghapus data pelanggan
     print("3. Hapus Data")
     index = int(input("Masukkan Index Data \t: "))
     pelanggan.hapus_data(index)
